@@ -1,13 +1,37 @@
 {
   "name": "modempay/modempay-php",
-  "description": "ModemPay PHP SDK",
+  "description": "Official PHP SDK for ModemPay payment processing. Simple, fast, and framework-agnostic with first-class Laravel support.",
   "type": "library",
+  "keywords": [
+    "modempay",
+    "payment",
+    "payments",
+    "payment gateway",
+    "payment processing",
+    "sdk",
+    "laravel",
+    "php"
+  ],
+  "homepage": "https://github.com/modempay-inc/modempay-php",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "ModemPay",
+      "email": "info@modempay.com",
+      "homepage": "https://modempay.com"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/modempay-inc/modempay-php/issues",
+    "source": "https://github.com/modempay-inc/modempay-php",
+    "docs": "https://docs.modempay.com"
+  },
   "require": {
     "php": "^8.1",
-    "symfony/http-client": "^7.3"
+    "symfony/http-client": "^6.0|^7.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "^10.0",
+    "phpunit/phpunit": "^10.0|^11.0",
     "illuminate/support": "^10.0|^11.0"
   },
   "suggest": {
@@ -23,6 +47,10 @@
       "ModemPay\\Tests\\": "tests/"
     }
   },
+  "scripts": {
+    "test": "phpunit",
+    "test-coverage": "phpunit --coverage-html coverage"
+  },
   "extra": {
     "laravel": {
       "providers": [
@@ -32,6 +60,11 @@
         "ModemPay": "ModemPay\\Laravel\\Facades\\ModemPay"
       }
     }
+  },
+  "config": {
+    "sort-packages": true,
+    "preferred-install": "dist",
+    "optimize-autoloader": true
   },
   "minimum-stability": "stable",
   "prefer-stable": true
