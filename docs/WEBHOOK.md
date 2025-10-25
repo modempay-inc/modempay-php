@@ -74,7 +74,7 @@ Use curl to test locally:
 ```bash
 curl -X POST http://localhost:8000/webhooks/modempay \
   -H "Content-Type: application/json" \
-  -H "X-ModemPay-Signature: computed_signature_here" \
+  -H "x-modem-signature: computed_signature_here" \
   -d '{"event":"payment_intent.created","payload":{"id":"pi_123"}}'
 ```
 

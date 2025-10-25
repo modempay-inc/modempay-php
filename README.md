@@ -25,7 +25,10 @@ $payments = $modemPay->paymentIntents()->list(['limit' => 10]);
 // Create a transfer
 $transfer = $modemPay->transfers()->create([
     'amount' => 1000,
-    'currency' => 'USD',
+    'account_number' => '7012345',
+    'network' => 'wave',
+    'currency' => 'GMD',
+    'beneficiary_name' => 'John Doe'
 ]);
 
 // Validate webhook

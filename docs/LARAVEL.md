@@ -34,9 +34,12 @@ use ModemPay\Laravel\Facades\ModemPay;
 $payments = ModemPay::paymentIntents()->list(['limit' => 10]);
 
 // Create transfer
-$transfer = ModemPay::transfers()->create([
+$transfer = $modemPay->transfers()->create([
     'amount' => 1000,
-    'currency' => 'USD',
+    'account_number' => '7012345',
+    'network' => 'wave',
+    'currency' => 'GMD',
+    'beneficiary_name' => 'John Doe'
 ]);
 ```
 
@@ -79,7 +82,7 @@ class WebhookController extends Controller
     {
         $event = ModemPay::webhooks()->composeEventDetails(
             $request->getContent(),
-            $request->header('X-ModemPay-Signature'),
+            $request->header('x-modem-signature'),
             config('modempay.webhook_secret')
         );
 
@@ -140,14 +143,14 @@ class ProcessModemPayWebhook
 
 ```php
 ModemPay::paymentIntents()->list(['limit' => 10]);
-ModemPay::paymentIntents()->get('pi_123');
+ModemPay::paymentIntents()->retrieve('hash');
 ModemPay::paymentIntents()->create([...]);
 ```
 
 ### Transfers
 
 ```php
-ModemPay::transfers()->list(['limit' => 10]);
+ModemPay::transfers()->retrieve('tr_id');
 ModemPay::transfers()->create([...]);
 ```
 

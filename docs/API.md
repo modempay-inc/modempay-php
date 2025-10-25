@@ -14,7 +14,7 @@ $modemPay->paymentIntents()->list([
 ### Get Payment Intent
 
 ```php
-$modemPay->paymentIntents()->get('pi_123');
+$modemPay->paymentIntents()->retrieve('hash');
 ```
 
 ### Create Payment Intent
@@ -22,29 +22,21 @@ $modemPay->paymentIntents()->get('pi_123');
 ```php
 $modemPay->paymentIntents()->create([
     'amount' => 1000,
-    'currency' => 'USD',
-    'description' => 'Order #123'
+    'currency' => 'GMD'
 ]);
 ```
 
 ## Transfers
-
-### List Transfers
-
-```php
-$modemPay->transfers()->list([
-    'limit' => 10,
-    'offset' => 0
-]);
-```
 
 ### Create Transfer
 
 ```php
 $modemPay->transfers()->create([
     'amount' => 1000,
-    'currency' => 'USD',
-    'destination' => 'acc_123'
+    'account_number' => '7012345',
+    'network' => 'wave',
+    'currency' => 'GMD',
+    'beneficiary_name' => 'John Doe'
 ]);
 ```
 
@@ -55,7 +47,7 @@ $modemPay->transfers()->create([
 ```php
 $event = $modemPay->webhooks()->composeEventDetails(
     $payload,      // Raw request body (string)
-    $signature,    // X-ModemPay-Signature header
+    $signature,    // x-modem-signature header
     $secret        // Your webhook secret
 );
 ```
