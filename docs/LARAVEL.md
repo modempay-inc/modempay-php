@@ -40,7 +40,7 @@ $transfer = $modemPay->transfers()->create([
     'network' => 'wave',
     'currency' => 'GMD',
     'beneficiary_name' => 'John Doe'
-]);
+], 'idempotency-key');
 ```
 
 ### Using Dependency Injection
@@ -151,7 +151,7 @@ ModemPay::paymentIntents()->create([...]);
 
 ```php
 ModemPay::transfers()->retrieve('tr_id');
-ModemPay::transfers()->create([...]);
+ModemPay::transfers()->create([...], 'idempotency-key');
 ```
 
 ### Webhooks

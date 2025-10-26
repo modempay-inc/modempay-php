@@ -29,7 +29,7 @@ $transfer = $modemPay->transfers()->create([
     'network' => 'wave',
     'currency' => 'GMD',
     'beneficiary_name' => 'John Doe'
-]);
+], 'idempotency-key');
 
 // Validate webhook
 $event = $modemPay->webhooks()->composeEventDetails(
