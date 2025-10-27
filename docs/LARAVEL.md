@@ -34,7 +34,7 @@ use ModemPay\Laravel\Facades\ModemPay;
 $payments = ModemPay::paymentIntents()->list(['limit' => 10]);
 
 // Create transfer
-$transfer = $modemPay->transfers()->create([
+$transfer = $modemPay->transfers()->initiate([
     'amount' => 1000,
     'account_number' => '7012345',
     'network' => 'wave',
@@ -151,7 +151,7 @@ ModemPay::paymentIntents()->create([...]);
 
 ```php
 ModemPay::transfers()->retrieve('tr_id');
-ModemPay::transfers()->create([...], 'idempotency-key');
+ModemPay::transfers()->initiate([...], 'idempotency-key');
 ```
 
 ### Webhooks

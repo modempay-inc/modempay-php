@@ -31,7 +31,7 @@ $modemPay->paymentIntents()->create([
 ### Create Transfer
 
 ```php
-$modemPay->transfers()->create([
+$modemPay->transfers()->initiate([
     'amount' => 1000,
     'account_number' => '7012345',
     'network' => 'wave',

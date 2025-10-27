@@ -23,7 +23,7 @@ $modemPay = new ModemPay('your_api_key');
 $payments = $modemPay->paymentIntents()->list(['limit' => 10]);
 
 // Create a transfer
-$transfer = $modemPay->transfers()->create([
+$transfer = $modemPay->transfers()->initiate([
     'amount' => 1000,
     'account_number' => '7012345',
     'network' => 'wave',
